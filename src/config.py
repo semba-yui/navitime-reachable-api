@@ -28,7 +28,7 @@ class Config:
         
         # 出力ディレクトリ
         self.output_dir = Path("csv")
-        self.map_filename = "reachable_map.html"
+        self.map_filename = "index.html"
         
         # API設定
         self.api_timeout = 30  # APIタイムアウト（秒）

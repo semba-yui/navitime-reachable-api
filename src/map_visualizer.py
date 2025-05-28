@@ -147,10 +147,15 @@ class MapVisualizer:
         Returns:
             色名
         """
-        for threshold, color in sorted(self.time_colors.items()):
-            if time <= threshold:
-                return color.replace("#", "").lower()
-        return "gray"
+        # 色名のマッピング（folium.Iconで使える色）
+        if time <= 10:
+            return "green"
+        elif time <= 20:
+            return "orange"
+        elif time <= 30:
+            return "red"
+        else:
+            return "gray"
     
     def add_legend(self) -> None:
         """凡例を追加"""
@@ -160,9 +165,9 @@ class MapVisualizer:
                     background-color: white; z-index:9999; font-size:14px;
                     border:2px solid grey; border-radius: 5px">
         <p style="margin: 10px;"><b>所要時間</b></p>
-        <p style="margin: 10px;"><i class="fa fa-circle" style="color:#2ECC40"></i> 10分以内</p>
-        <p style="margin: 10px;"><i class="fa fa-circle" style="color:#FFDC00"></i> 20分以内</p>
-        <p style="margin: 10px;"><i class="fa fa-circle" style="color:#FF851B"></i> 30分以内</p>
+        <p style="margin: 10px;"><i class="fa fa-circle" style="color:green"></i> 10分以内</p>
+        <p style="margin: 10px;"><i class="fa fa-circle" style="color:orange"></i> 11-20分</p>
+        <p style="margin: 10px;"><i class="fa fa-circle" style="color:red"></i> 21-30分</p>
         </div>
         '''
         self.map.get_root().html.add_child(folium.Element(legend_html))

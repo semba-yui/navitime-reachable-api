@@ -116,7 +116,7 @@ def main():
         visualizer.add_reachable_polygon(polygon_coords)
     
     # 地図の保存
-    map_file = Path("test_map.html")
+    map_file = Path("index.html")
     visualizer.save_map(map_file)
     print(f"地図を保存しました: {map_file}")
     print()
